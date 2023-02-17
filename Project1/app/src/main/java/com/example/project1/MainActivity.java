@@ -44,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart(){
+        super.onRestart();
+
+        Toast.makeText(getApplicationContext(), "Restarted", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "OnRestart");
+    }
+
+    @Override
     protected void onStop(){
         super.onStop();
 
