@@ -6,6 +6,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -17,8 +18,11 @@ import com.example.project1.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final String TAG = this.getClass().getSimpleName();
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -26,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.i(TAG, "OnCreate");
+        Toast.makeText(getApplicationContext(), "Created", Toast.LENGTH_SHORT).show();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -46,10 +53,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.i(TAG, "OnStart");
+        Toast.makeText(getApplicationContext(), "Started", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.i(TAG, "OnResume");
+        Toast.makeText(getApplicationContext(), "Resumed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Log.i(TAG, "OnPause");
+        Toast.makeText(getApplicationContext(), "Paused", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.i(TAG, "OnStop");
+        Toast.makeText(getApplicationContext(), "Stopped", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Log.i(TAG, "OnDestroy");
+        Toast.makeText(getApplicationContext(), "Destroyed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
