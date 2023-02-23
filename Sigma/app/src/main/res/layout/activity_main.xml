@@ -6,7 +6,6 @@
     tools:context=".MainActivity">
 
     <TableLayout
-        android:id="@+id/mainTableLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -14,9 +13,18 @@
         android:stretchColumns="*"
         >
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/logo_description"
+                android:scaleType="fitStart"
+                android:src="@mipmap/logo_image" />
 
             <TableLayout
                 android:layout_width="wrap_content"
@@ -34,20 +42,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/app_tagline"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
             </TableLayout>
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/logo_description"
-                    android:src="@mipmap/logo_image" />
+
+            <TextView
+                android:id="@+id/myProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@string/my_profile_button_text"
+                android:textAlignment="textEnd"
+                android:textSize="20sp"
+                />
 
 
-
-        </TableRow>
+        </LinearLayout>
 
         <TableLayout
             android:orientation="vertical"
