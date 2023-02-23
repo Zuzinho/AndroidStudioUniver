@@ -7,4 +7,5 @@
     <string name="portfolios_heading">Last Portfolios</string>
     <string name="logo_description">Logo</string>
     <string name="search_magnifying_glass_description">Magnifying glass</string>
+    <string name="my_profile_button_text">My profile</string>
 </resources>
