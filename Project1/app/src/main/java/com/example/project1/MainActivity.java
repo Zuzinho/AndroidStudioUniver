@@ -1,8 +1,11 @@
 package com.example.project1;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Destroyed", Toast.LENGTH_SHORT).show();
         Log.i(TAG, "OnDestroy");
+    }
+
+    public void onClick(View view){
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
     }
 
 }
