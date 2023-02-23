@@ -1,18 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TableLayout
+        android:id="@+id/mainTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:shrinkColumns="*"
+        android:stretchColumns="*"
+        >
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_tagline"
+                    android:textSize="20sp" />
+
+            </TableLayout>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/logo_description"
+                    android:src="@mipmap/logo_image" />
+
+
+
+        </TableRow>
+
+        <TableLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/purple_500"
+            >
+
+            <TextView
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/search_heading"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                >
+
+                <EditText
+                    android:id="@+id/searchInput"
+                    android:layout_height="30dp"
+                    android:layout_width="300dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:hint="@string/search_placeholder"
+                    android:padding="5dp"
+                    android:textColorHint="@color/gray"
+                    android:autofillHints="name"
+                    android:inputType="text" />
+
+                <TableRow
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/magnifying_glass"
+                        android:contentDescription="@string/search_magnifying_glass_description" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/search_text"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"/>
+
+                </TableRow>
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+                android:text="@string/portfolios_heading"
+                android:textSize="30sp"
+                android:padding="5dp"
+                />
+
+        </TableRow>
+
+        <TableLayout
+            android:id="@+id/portfoliosTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </TableLayout>
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
