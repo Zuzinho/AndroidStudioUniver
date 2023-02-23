@@ -8,4 +8,10 @@
     <string name="logo_description">Logo</string>
     <string name="search_magnifying_glass_description">Magnifying glass</string>
     <string name="my_profile_button_text">My profile</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in_hint">Already registered?</string>
+    <string name="sign_up_hint">New here?</string>
 </resources>
