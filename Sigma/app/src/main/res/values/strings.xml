@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Sigma</string>
+    <string name="app_tagline">Where your portfolio starts</string>
+    <string name="search_heading">Find specialists</string>
+    <string name="search_placeholder">Search for skills or projects</string>
+    <string name="search_text">Search</string>
+    <string name="portfolios_heading">Last Portfolios</string>
+    <string name="logo_description">Logo</string>
+    <string name="search_magnifying_glass_description">Magnifying glass</string>
 </resources>
