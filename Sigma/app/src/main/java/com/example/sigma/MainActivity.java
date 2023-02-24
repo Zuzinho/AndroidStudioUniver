@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMyProfileClick(View v){
         Log.i(TAG, "Clicked My Profile");
+        
         Intent intent;
         if(userId == 0) {
             intent = new Intent(this, SignInActivity.class);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             intent = new Intent(this, UserProfile.class);
             intent.putExtra("id", userId);
+            intent.putExtra("userId", userId);
         }
         startActivity(intent);
     }
@@ -92,8 +94,10 @@ public class MainActivity extends AppCompatActivity {
 
         portfolioRow.setOnClickListener(v -> {
             Log.i(TAG, "Clicked user`s portfolio");
+
             Intent intent = new Intent(this, UserProfile.class);
             intent.putExtra("id", user.getId());
+            intent.putExtra("userId", userId);
             startActivity(intent);
         });
 

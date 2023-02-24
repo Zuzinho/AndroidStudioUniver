@@ -18,6 +18,7 @@ public class SignUpActivity extends AppCompatActivity {
         LinearLayout mainPageButton = (LinearLayout)findViewById(R.id.mainPageButton);
         mainPageButton.setOnClickListener(v -> {
             Log.i(TAG, "Clicked main page");
+
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
@@ -25,6 +26,7 @@ public class SignUpActivity extends AppCompatActivity {
         Button signInButton = (Button)findViewById(R.id.signInButton);
         signInButton.setOnClickListener(v -> {
             Log.i(TAG, "Clicked sign in button");
+
             Intent intent = new Intent(this, SignInActivity.class);
             startActivity(intent);
         });
