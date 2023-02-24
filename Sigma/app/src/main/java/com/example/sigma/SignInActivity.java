@@ -30,5 +30,15 @@ public class SignInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SignUpActivity.class);
             startActivity(intent);
         });
+
+        Button signInButton = (Button)findViewById(R.id.signInButton);
+        signInButton.setOnClickListener(v -> {
+            Log.i(TAG, "Clicked on signIn button");
+
+            Intent intent = new Intent();
+            intent.putExtra("userId", 1);
+            setResult(RESULT_OK, intent);
+            finish();
+        });
     }
 }

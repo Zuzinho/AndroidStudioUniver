@@ -1,5 +1,6 @@
 package com.example.sigma;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -38,23 +39,35 @@ public class MainActivity extends AppCompatActivity {
         for(User user: users) portfoliosTable.addView(createPortfolioRow(user));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, "onActivityResult");
+
+        if(resultCode == RESULT_OK) userId = (int) data.getExtras().get("userId");
+    }
+
     public static void setUserId(int newUserId){
         userId = newUserId;
     }
 
+    public static int getUserId(){
+        return userId;
+    }
+
     public void onMyProfileClick(View v){
         Log.i(TAG, "Clicked My Profile");
-        
+
         Intent intent;
         if(userId == 0) {
             intent = new Intent(this, SignInActivity.class);
+            startActivityForResult(intent, 1);
         }
         else {
             intent = new Intent(this, UserProfile.class);
-            intent.putExtra("id", userId);
             intent.putExtra("userId", userId);
+            startActivity(intent);
         }
-        startActivity(intent);
     }
 
     @SuppressLint("ResourceAsColor")
@@ -96,8 +109,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "Clicked user`s portfolio");
 
             Intent intent = new Intent(this, UserProfile.class);
-            intent.putExtra("id", user.getId());
-            intent.putExtra("userId", userId);
+            intent.putExtra("userId", user.getId());
             startActivity(intent);
         });
 
