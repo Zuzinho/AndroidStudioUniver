@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.sigma.database.DataBase;
 import com.example.sigma.databinding.ActivityMainBinding;
@@ -16,20 +17,20 @@ import com.example.sigma.models.User;
 public class UserProfile extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
     private User user;
-    private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Bundle arguments = getIntent().getExtras();
-
-        int id = (int)arguments.get("id");
-
-        user = DataBase.getUserById(id);
-        userId = (int)arguments.get("userid");
-
         ActivityUserProfileBinding view = ActivityUserProfileBinding.inflate(getLayoutInflater());
+        setContentView(view.getRoot());
 
+        int userId = (int)getIntent().getExtras().get("userId");
+        user = DataBase.getUserById(userId);
+
+        if(user == null) {
+            Toast.makeText(getApplicationContext(), "No such user", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
         view.userAvatar.setImageResource(user.getAvatarPath());
         view.userName.setText(user.getName());
         view.userPosition.setText(user.getPosition());
@@ -39,13 +40,22 @@ public class UserProfile extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
+
     }
 
     public void onMyProfileClick(View view){
+        Log.i(TAG, "Clicked on my profile");
+
+        int userId = MainActivity.getUserId();
         if(userId == user.getId()) return;
-        Intent intent = new Intent(this, UserProfile.class);
-        intent.putExtra("id", userId);
-        intent.putExtra("userId", userId);
+        Intent intent;
+        if(userId == 0){
+            intent = new Intent(this, SignInActivity.class);
+        }
+        else {
+            intent = new Intent(this, UserProfile.class);
+            intent.putExtra("userId", userId);
+        }
         startActivity(intent);
     }
 }
