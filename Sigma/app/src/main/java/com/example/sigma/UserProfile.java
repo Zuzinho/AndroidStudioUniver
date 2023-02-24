@@ -37,6 +37,8 @@ public class UserProfile extends AppCompatActivity {
         view.userInfo.setText(user.getInfo());
 
         view.mainPageButton.setOnClickListener(v -> {
+            Log.i(TAG, "Clicked on main page");
+
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
