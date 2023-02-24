@@ -15,6 +15,7 @@
         >
 
         <LinearLayout
+            android:id="@+id/mainPageButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -95,7 +96,7 @@
                 />
 
             <Button
-                android:id="@+id/signUpButton"
+                android:id="@+id/signInButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in"
@@ -119,7 +120,7 @@
                 android:textStyle="bold"/>
 
             <Button
-                android:id="@+id/signInButton"
+                android:id="@+id/signUpButton"
                 android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
