@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-    
+
     public static int getUserId(){
         return userId;
     }
