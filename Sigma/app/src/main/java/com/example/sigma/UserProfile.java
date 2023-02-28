@@ -44,20 +44,4 @@ public class UserProfile extends AppCompatActivity {
         });
 
     }
-
-    public void onMyProfileClick(View view){
-        Log.i(TAG, "Clicked on my profile");
-
-        int userId = MainActivity.getUserId();
-        if(userId == user.getId()) return;
-        Intent intent;
-        if(userId == 0){
-            intent = new Intent(this, SignInActivity.class);
-        }
-        else {
-            intent = new Intent(this, UserProfile.class);
-            intent.putExtra("userId", userId);
-        }
-        startActivity(intent);
-    }
 }
