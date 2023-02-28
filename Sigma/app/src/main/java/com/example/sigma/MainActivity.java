@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TableLayout portfoliosTable = (TableLayout)findViewById(R.id.portfoliosTable);
+        TableLayout portfoliosTable = findViewById(R.id.portfoliosTable);
 
         users = DataBase.users;
         for(User user: users) portfoliosTable.addView(createPortfolioRow(user));
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        TextView textView = (TextView)findViewById(R.id.myProfileButton);
+        TextView textView = findViewById(R.id.myProfileButton);
         Log.i(TAG, "userId" + userId);
         if(userId == 0) {
             textView.setText(R.string.sign_in);

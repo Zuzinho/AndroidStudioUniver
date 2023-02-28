@@ -16,7 +16,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        Button signUpButton = (Button)findViewById(R.id.signUpButton);
+        Button signUpButton = findViewById(R.id.signUpButton);
         signUpButton.setOnClickListener(v -> {
             Log.i(TAG, "Clicked sign up button");
 
@@ -24,7 +24,7 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        Button signInButton = (Button)findViewById(R.id.signInButton);
+        Button signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(v -> {
             Log.i(TAG, "Clicked on signIn button");
 
