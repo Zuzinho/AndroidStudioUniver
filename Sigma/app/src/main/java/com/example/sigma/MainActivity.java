@@ -1,5 +1,10 @@
 package com.example.sigma;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +25,8 @@ import android.widget.TextView;
 import com.example.sigma.database.DataBase;
 import com.example.sigma.models.User;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
 import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
@@ -29,10 +36,24 @@ public class MainActivity extends AppCompatActivity {
     private static int userId = 0;
     private ArrayList<User> users;
 
+    private ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if(result.getResultCode() == RESULT_OK){
+                    Log.i(TAG, "got result");
+                    Intent intent = result.getData();
+                    userId = (int)intent.getExtras().get("userId");
+                }
+                else{
+                    Log.e(TAG, "Sign in or on error");
+                }
+                Log.i(TAG, "new userId" + userId);
+            });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         TableLayout portfoliosTable = (TableLayout)findViewById(R.id.portfoliosTable);
 
         users = DataBase.users;
@@ -40,34 +61,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.i(TAG, "onActivityResult");
+    protected void onResume() {
+        super.onResume();
 
-        if(resultCode == RESULT_OK) userId = (int) data.getExtras().get("userId");
+        TextView textView = (TextView)findViewById(R.id.myProfileButton);
+        Log.i(TAG, "userId" + userId);
+        if(userId == 0) {
+            textView.setText(R.string.sign_in);
+            textView.setOnClickListener(v -> {
+                Log.i(TAG, "Sign in clicked");
+
+                Intent intent = new Intent(this, SignInActivity.class);
+                mStartForResult.launch(intent);
+            });
+        }
+        else{
+            textView.setText(R.string.my_profile_button_text);
+            textView.setOnClickListener(v -> {
+                Log.i(TAG ,"My Profile clicked");
+                Intent intent = new Intent(this, UserProfile.class);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+            });
+        }
     }
-
-    public static void setUserId(int newUserId){
-        userId = newUserId;
-    }
-
+    
     public static int getUserId(){
         return userId;
-    }
-
-    public void onMyProfileClick(View v){
-        Log.i(TAG, "Clicked My Profile");
-
-        Intent intent;
-        if(userId == 0) {
-            intent = new Intent(this, SignInActivity.class);
-            startActivityForResult(intent, 1);
-        }
-        else {
-            intent = new Intent(this, UserProfile.class);
-            intent.putExtra("userId", userId);
-            startActivity(intent);
-        }
     }
 
     @SuppressLint("ResourceAsColor")
@@ -109,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "Clicked user`s portfolio");
 
             Intent intent = new Intent(this, UserProfile.class);
-            intent.putExtra("userId", user.getId());
+            int id = user.getId();
+            intent.putExtra("userId", id);
             startActivity(intent);
         });
 
