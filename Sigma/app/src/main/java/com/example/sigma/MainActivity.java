@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.myProfileButton);
         Log.i(TAG, "userId" + userId);
-        if(userId == 0) {
+        if (userId == 0) {
             textView.setText(R.string.sign_in);
             textView.setOnClickListener(v -> {
                 Log.i(TAG, "Sign in clicked");
@@ -74,16 +74,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, SignInActivity.class);
                 mStartForResult.launch(intent);
             });
+            return;
         }
-        else{
-            textView.setText(R.string.my_profile_button_text);
-            textView.setOnClickListener(v -> {
-                Log.i(TAG ,"My Profile clicked");
-                Intent intent = new Intent(this, UserProfile.class);
-                intent.putExtra("userId", userId);
-                startActivity(intent);
-            });
-        }
+        textView.setText(R.string.my_profile_button_text);
+        textView.setOnClickListener(v -> {
+            Log.i(TAG, "My Profile clicked");
+            Intent intent = new Intent(this, UserProfile.class);
+            intent.putExtra("userId", userId);
+            startActivity(intent);
+        });
     }
 
     public static int getUserId(){
