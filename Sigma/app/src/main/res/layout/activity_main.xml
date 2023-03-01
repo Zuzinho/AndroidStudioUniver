@@ -78,7 +78,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 
-            <TableRow
+            <LinearLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
@@ -97,7 +97,7 @@
                     android:autofillHints="name"
                     android:inputType="text" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     >
@@ -116,13 +116,13 @@
                         android:textSize="20sp"
                         android:textColor="@color/white"/>
 
-                </TableRow>
+                </LinearLayout>
 
-            </TableRow>
+            </LinearLayout>
 
         </TableLayout>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -135,7 +135,7 @@
                 android:padding="5dp"
                 />
 
-        </TableRow>
+        </LinearLayout>
 
         <TableLayout
             android:id="@+id/portfoliosTable"
