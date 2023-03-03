@@ -7,6 +7,8 @@ import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private static int userId = 0;
     private ArrayList<User> users;
 
+    FragmentManager fragmentManager;
+
     private ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if(result.getResultCode() == RESULT_OK){
@@ -53,11 +57,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        TableLayout portfoliosTable = findViewById(R.id.portfoliosTable);
+        fragmentManager = getSupportFragmentManager();
 
         users = DataBase.users;
-        for(User user: users) portfoliosTable.addView(createPortfolioRow(user));
+
+        TableLayout portfoliosTable = findViewById(R.id.portfoliosTable);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -1);
+
+        for(User user: users) {
+            FragmentContainerView containerView = new FragmentContainerView(getApplicationContext());
+            containerView.setLayoutParams(layoutParams);
+            containerView.setId(user.getId());
+            fragmentManager.beginTransaction().setReorderingAllowed(true).
+                    add(user.getId(), new UserRowFragment(user), "userRow").commit();
+            portfoliosTable.addView(containerView);
+        }
     }
 
     @Override
@@ -87,52 +101,5 @@ public class MainActivity extends AppCompatActivity {
 
     public static int getUserId(){
         return userId;
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private LinearLayout createPortfolioRow(User user){
-        Context context = getApplicationContext();
-
-        LinearLayout portfolioRow = new LinearLayout(context);
-        portfolioRow.setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
-
-        ImageView avatar = new ImageView(context);
-        avatar.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        avatar.setImageResource(user.getAvatarPath());
-
-        TableLayout userInfo = new TableLayout(context);
-        LinearLayout.LayoutParams userInfoLayout = new LinearLayout.LayoutParams(-2, -1);
-        userInfoLayout.setMarginStart(10);
-        userInfo.setLayoutParams(userInfoLayout);
-        userInfo.setOrientation(LinearLayout.VERTICAL);
-
-        TextView userName = new TextView(context);
-        userName.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        userName.setText(user.getName());
-        userName.setTextSize(20);
-        userName.setTypeface(userName.getTypeface(), Typeface.BOLD);
-
-        TextView userPosition = new TextView(context);
-        userPosition.setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
-        userPosition.setText(user.getPosition());
-        userPosition.setTextSize(15);
-        userPosition.setTextColor(R.color.gray);
-
-        userInfo.addView(userName);
-        userInfo.addView(userPosition);
-
-        portfolioRow.addView(avatar);
-        portfolioRow.addView(userInfo);
-
-        portfolioRow.setOnClickListener(v -> {
-            Log.i(TAG, "Clicked user`s portfolio");
-
-            Intent intent = new Intent(this, UserProfile.class);
-            int id = user.getId();
-            intent.putExtra("userId", id);
-            startActivity(intent);
-        });
-
-        return portfolioRow;
     }
 }
