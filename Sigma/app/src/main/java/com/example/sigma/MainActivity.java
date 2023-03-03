@@ -68,8 +68,14 @@ public class MainActivity extends AppCompatActivity {
             FragmentContainerView containerView = new FragmentContainerView(getApplicationContext());
             containerView.setLayoutParams(layoutParams);
             containerView.setId(user.getId());
+            Bundle bundle = new Bundle();
+            bundle.putInt("userId", user.getId());
+            bundle.putString("userName", user.getName());
+            bundle.putString("userPosition", user.getPosition());
+            bundle.putInt("userAvatar", user.getAvatarPath());
+            bundle.putString("userInfo", user.getInfo());
             fragmentManager.beginTransaction().setReorderingAllowed(true).
-                    add(user.getId(), new UserRowFragment(user), "userRow").commit();
+                    add(user.getId(), UserRowFragment.class, bundle).commit();
             portfoliosTable.addView(containerView);
         }
     }

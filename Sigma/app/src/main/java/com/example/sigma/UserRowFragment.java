@@ -12,16 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sigma.models.User;
 
 public class UserRowFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
-    private User user;
 
-    public UserRowFragment(User user){
+    public UserRowFragment(){
         super(R.layout.fragment_user_row);
-        this.user = user;
     }
 
     @Override
@@ -39,6 +38,8 @@ public class UserRowFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
+        Bundle data = this.getArguments();
+        
         View view = inflater.inflate(R.layout.fragment_user_row, container, false);
 
         LinearLayout userRow = view.findViewById(R.id.userRow);
@@ -53,14 +54,14 @@ public class UserRowFragment extends Fragment {
             result.putString("userPage", "On user page");
             getParentFragmentManager().setFragmentResult("requestKey", result);
             Intent intent = new Intent(getContext(), UserProfile.class);
-            int id = user.getId();
+            int id = data.getInt("userId");
             intent.putExtra("userId", id);
             startActivity(intent);
         });
 
-        userName.setText(user.getName());
-        userAvatar.setImageResource(user.getAvatarPath());
-        userPosition.setText(user.getPosition());
+        userName.setText(data.getString("userName"));
+        userAvatar.setImageResource(data.getInt("userAvatar"));
+        userPosition.setText(data.getString("userPosition"));
 
         return view;
     }
