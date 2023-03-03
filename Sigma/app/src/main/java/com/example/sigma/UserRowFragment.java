@@ -24,6 +24,18 @@ public class UserRowFragment extends Fragment {
         this.user = user;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        getParentFragmentManager().setFragmentResultListener("requestKey", this,
+                (requestKey, bundle) -> {
+                    String result = bundle.getString("userPage");
+                    Log.i(TAG, "User page - " + result);
+                }
+        );
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
@@ -37,6 +49,9 @@ public class UserRowFragment extends Fragment {
         userRow.setOnClickListener(v -> {
             Log.i(TAG, "Clicked user`s portfolio");
 
+            Bundle result = new Bundle();
+            result.putString("userPage", "On user page");
+            getParentFragmentManager().setFragmentResult("requestKey", result);
             Intent intent = new Intent(getContext(), UserProfile.class);
             int id = user.getId();
             intent.putExtra("userId", id);
