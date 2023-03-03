@@ -1,6 +1,7 @@
 package com.example.sigma;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +18,18 @@ import com.example.sigma.models.User;
 public class UserProfile extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
     private User user;
+    FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityUserProfileBinding view = ActivityUserProfileBinding.inflate(getLayoutInflater());
         setContentView(view.getRoot());
+
+        if(savedInstanceState == null){
+            fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().setReorderingAllowed(true).add(R.id.headerContainerView,
+                    HeaderFragment.class, null).commit();
+        }
 
         int userId = (int)getIntent().getExtras().get("userId");
         user = DataBase.getUserById(userId);
@@ -35,13 +43,5 @@ public class UserProfile extends AppCompatActivity {
         view.userName.setText(user.getName());
         view.userPosition.setText(user.getPosition());
         view.userInfo.setText(user.getInfo());
-
-        view.mainPageButton.setOnClickListener(v -> {
-            Log.i(TAG, "Clicked on main page");
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
-
     }
 }

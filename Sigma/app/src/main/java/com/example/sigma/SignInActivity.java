@@ -1,6 +1,7 @@
 package com.example.sigma;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +12,17 @@ import android.widget.LinearLayout;
 
 public class SignInActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
+    FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        if(savedInstanceState == null){
+            fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().setReorderingAllowed(true).add(R.id.headerContainerView,
+                    HeaderFragment.class, null).commit();
+        }
 
         Button signUpButton = findViewById(R.id.signUpButton);
         signUpButton.setOnClickListener(v -> {
@@ -33,12 +41,5 @@ public class SignInActivity extends AppCompatActivity {
             setResult(RESULT_OK, intent);
             finish();
         });
-    }
-
-    public void onMainPageClicked(View view){
-        Log.i(TAG, "Clicked main page");
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }
