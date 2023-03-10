@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.sigma.R;
 import com.example.sigma.database.DataBase;
+import com.example.sigma.databinding.ActivityUserProfileBinding;
 import com.example.sigma.fragment.HeaderFragment;
 import com.example.sigma.models.User;
 
