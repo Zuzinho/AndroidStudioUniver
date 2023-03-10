@@ -15,4 +15,9 @@
     <string name="password_hint">Password</string>
     <string name="sign_in_hint">Already registered?</string>
     <string name="sign_up_hint">New here?</string>
+    <string name="see_all_button">See all</string>
+    <string name="list_view_selector">List view</string>
+    <string name="recycler_view_selector">Recycler view</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
