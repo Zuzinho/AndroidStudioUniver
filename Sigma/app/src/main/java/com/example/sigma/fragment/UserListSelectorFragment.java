@@ -32,6 +32,11 @@ public class UserListSelectorFragment extends Fragment {
                     new UserListViewFragment(DataBase.users), "UserListViewFragment").commit();
         });
 
+        recyclerViewSelectButton.setOnClickListener(v -> {
+            getParentFragmentManager().beginTransaction().replace(R.id.contentFragmentContainer,
+                    new UserRecyclerViewFragment(DataBase.users), "UserRecyclerViewFragment").commit();
+        });
+
         return view;
     }
 }
