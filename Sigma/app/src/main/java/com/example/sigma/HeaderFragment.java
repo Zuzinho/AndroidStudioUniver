@@ -20,7 +20,6 @@ import com.example.sigma.databinding.FragmentHeaderBinding;
 
 public class HeaderFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();
-    private FragmentHeaderBinding binding;
 
     public HeaderFragment(){
         super(R.layout.fragment_header);
