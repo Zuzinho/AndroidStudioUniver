@@ -1,37 +1,24 @@
-package com.example.sigma;
+package com.example.sigma.activity;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.example.sigma.R;
 import com.example.sigma.database.DataBase;
+import com.example.sigma.fragment.UserRowFragment;
 import com.example.sigma.models.User;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

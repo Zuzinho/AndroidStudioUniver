@@ -1,12 +1,8 @@
-package com.example.sigma;
+package com.example.sigma.fragment;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -16,7 +12,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.sigma.databinding.FragmentHeaderBinding;
+import com.example.sigma.activity.MainActivity;
+import com.example.sigma.R;
 
 public class HeaderFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();

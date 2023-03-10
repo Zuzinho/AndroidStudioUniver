@@ -1,18 +1,14 @@
-package com.example.sigma;
+package com.example.sigma.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
+import com.example.sigma.R;
 import com.example.sigma.database.DataBase;
-import com.example.sigma.databinding.ActivityMainBinding;
-import com.example.sigma.databinding.ActivityUserProfileBinding;
+import com.example.sigma.fragment.HeaderFragment;
 import com.example.sigma.models.User;
 
 public class UserProfile extends AppCompatActivity {
