@@ -6,7 +6,7 @@ import com.example.sigma.models.User;
 import java.util.ArrayList;
 
 public class DataBase {
-    public final static ArrayList<User> users = getUsers(10);
+    public final static ArrayList<User> users = getUsers(200);
 
     private static ArrayList<User> getUsers(int count){
         ArrayList<User> arrayList = new ArrayList<>(count);
