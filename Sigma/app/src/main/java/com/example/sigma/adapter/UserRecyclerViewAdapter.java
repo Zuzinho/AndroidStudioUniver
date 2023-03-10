@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +25,6 @@ public class UserRecyclerViewAdapter extends
     private ArrayList<User> users;
 
     public UserRecyclerViewAdapter(Context context, ArrayList<User> users){
-        Log.i(TAG, "UserRecyclerViewAdapter");
         this.inflater = LayoutInflater.from(context);
         this.users = users;
     }
@@ -31,18 +32,20 @@ public class UserRecyclerViewAdapter extends
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.i(TAG, "onCreateViewHolder");
         View view = inflater.inflate(R.layout.fragment_user_row, parent, false);
         return new UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Log.i(TAG, "onBindViewHolder");
         User user = users.get(position);
         holder.userAvatarImageView.setImageResource(user.getAvatarPath());
         holder.userNameTextView.setText(user.getName());
         holder.userPositionTextView.setText(user.getPosition());
+        holder.userRow.setOnClickListener(v -> {
+            Log.i(TAG, "Clicked user`s portfolio");
+            Toast.makeText(inflater.getContext(), "RecyclerView item clicked", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -53,13 +56,14 @@ public class UserRecyclerViewAdapter extends
     public static class UserViewHolder
             extends RecyclerView.ViewHolder {
         private final String TAG = this.getClass().getSimpleName();
+        LinearLayout userRow;
         ImageView userAvatarImageView;
         TextView userNameTextView, userPositionTextView;
 
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-            Log.i(TAG, "UserViewHolder");
+            userRow = itemView.findViewById(R.id.userRow);
             userAvatarImageView = itemView.findViewById(R.id.userAvatarImageView);
             userNameTextView = itemView.findViewById(R.id.userNameTextView);
             userPositionTextView = itemView.findViewById(R.id.userPositionTextView);

@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,6 +49,7 @@ public class UserListViewAdapter extends ArrayAdapter<User> {
 
         userRow.setOnClickListener(v -> {
             Log.i(TAG, "Clicked user`s portfolio");
+            Toast.makeText(getContext(), "ListView item clicked", Toast.LENGTH_SHORT).show();
         });
 
         userName.setText(user.getName());
