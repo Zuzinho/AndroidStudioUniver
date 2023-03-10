@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -35,6 +36,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
+
+    private final static int maxPortfolioCount = 5;
     private static int userId = 0;
     private ArrayList<User> users;
 
@@ -57,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button seeAllButton = findViewById(R.id.seeAllButton);
+        seeAllButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, UserListActivity.class);
+            startActivity(intent);
+        });
+
         fragmentManager = getSupportFragmentManager();
 
         users = DataBase.users;
@@ -64,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         TableLayout portfoliosTable = findViewById(R.id.portfoliosTable);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-2, -1);
 
-        for(User user: users) {
+        for(int i = 0;i < users.size();i++) {
+            if(i == maxPortfolioCount) return;
+            User user = users.get(i);
             FragmentContainerView containerView = new FragmentContainerView(getApplicationContext());
             containerView.setLayoutParams(layoutParams);
             containerView.setId(user.getId());
