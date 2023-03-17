@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userListSelectorFragment">
+
+    <fragment
+        android:id="@+id/userListSelectorFragment"
+        android:name="com.example.sigma.fragment.UserListSelectorFragment"
+        android:label="fragment_user_list_selector"
+        tools:layout="@layout/fragment_user_list_selector" >
+        <action
+            android:id="@+id/action_userListSelectorFragment_to_userListViewFragment"
+            app:destination="@id/userListViewFragment" />
+        <action
+            android:id="@+id/action_userListSelectorFragment_to_userRecyclerViewFragment"
+            app:destination="@id/userRecyclerViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userListViewFragment"
+        android:name="com.example.sigma.fragment.UserListViewFragment"
+        android:label="fragment_user_list_view"
+        tools:layout="@layout/fragment_user_list_view" />
+
+    <fragment
+        android:id="@+id/userRecyclerViewFragment"
+        android:name="com.example.sigma.fragment.UserRecyclerViewFragment"
+        android:label="fragment_user_recycler_view"
+        tools:layout="@layout/fragment_user_recycler_view" />
+</navigation>
