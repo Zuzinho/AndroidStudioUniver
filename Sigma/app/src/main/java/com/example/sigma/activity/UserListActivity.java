@@ -24,7 +24,5 @@ public class UserListActivity extends AppCompatActivity {
                     HeaderFragment.class, null).commit();
 
         }
-        fragmentManager.beginTransaction().setReorderingAllowed(true).add(R.id.contentFragmentContainer,
-                UserListSelectorFragment.class, null).commit();
     }
 }
