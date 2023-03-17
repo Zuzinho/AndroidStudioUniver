@@ -10,19 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.sigma.R;
 import com.example.sigma.adapter.UserListViewAdapter;
-import com.example.sigma.databinding.FragmentUserListViewBinding;
+import com.example.sigma.database.DataBase;
 import com.example.sigma.models.User;
 
 import java.util.ArrayList;
 
 public class UserListViewFragment extends Fragment {
     private ArrayList<User> users;
-    public UserListViewFragment(ArrayList<User> users) {
+    public UserListViewFragment() {
         super(R.layout.fragment_user_list_view);
-        this.users = users;
+        this.users = DataBase.users;
     }
 
     @Nullable
@@ -31,6 +32,9 @@ public class UserListViewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_list_view, container, false);
 
         ListView listView = view.findViewById(R.id.userListView);
+
+        String path = getArguments().getString("path");
+        Toast.makeText(getContext(), path, Toast.LENGTH_SHORT).show();
 
         UserListViewAdapter adapter = new UserListViewAdapter(getContext(), R.layout.fragment_user_row, users);
 

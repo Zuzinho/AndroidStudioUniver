@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.sigma.R;
 import com.example.sigma.adapter.UserRecyclerViewAdapter;
+import com.example.sigma.database.DataBase;
 import com.example.sigma.models.User;
 
 import java.util.ArrayList;
@@ -21,9 +23,9 @@ import java.util.ArrayList;
 public class UserRecyclerViewFragment extends Fragment {
     private ArrayList<User> users;
 
-    public UserRecyclerViewFragment(ArrayList<User> users){
+    public UserRecyclerViewFragment(){
         super(R.layout.fragment_user_recycler_view);
-        this.users = users;
+        this.users = DataBase.users;
     }
 
     @Nullable
@@ -32,6 +34,10 @@ public class UserRecyclerViewFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_recycler_view, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.userRecyclerView);
+
+        String path = getArguments().getString("path");
+        Toast.makeText(getContext(), path, Toast.LENGTH_SHORT).show();
+
         UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(getContext(), users);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
 

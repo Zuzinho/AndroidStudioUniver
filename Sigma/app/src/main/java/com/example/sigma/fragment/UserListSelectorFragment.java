@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,14 +29,19 @@ public class UserListSelectorFragment extends Fragment {
         Button listViewSelectButton = view.findViewById(R.id.listViewSelectButton);
         Button recyclerViewSelectButton = view.findViewById(R.id.recyclerViewSelectButton);
 
+        Bundle bundle = new Bundle();
+
         listViewSelectButton.setOnClickListener(v -> {
-            getParentFragmentManager().beginTransaction().replace(R.id.contentFragmentContainer,
-                    new UserListViewFragment(DataBase.users), "UserListViewFragment").commit();
-        });
+            bundle.putString("path", "From userListSelectorFragment to userListViewFragment");
+            Navigation.findNavController(v).navigate(R.id.action_userListSelectorFragment_to_userListViewFragment,
+                    bundle);
+        }
+        );
 
         recyclerViewSelectButton.setOnClickListener(v -> {
-            getParentFragmentManager().beginTransaction().replace(R.id.contentFragmentContainer,
-                    new UserRecyclerViewFragment(DataBase.users), "UserRecyclerViewFragment").commit();
+            bundle.putString("path", "From userListSelectorFragment to userRecyclerViewFragment");
+            Navigation.findNavController(v).navigate(R.id.action_userListSelectorFragment_to_userRecyclerViewFragment,
+                    bundle);
         });
 
         return view;
