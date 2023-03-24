@@ -18,6 +18,6 @@
     <string name="see_all_button">See all</string>
     <string name="list_view_selector">List view</string>
     <string name="recycler_view_selector">Recycler view</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification_hint">Enter notification text</string>
+    <string name="notification_button">Show notification</string>
 </resources>
