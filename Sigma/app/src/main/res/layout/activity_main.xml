@@ -134,7 +134,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end">
+            >
+
+            <Button
+                android:id="@+id/createNotificationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_button"
+                android:layout_marginHorizontal="20dp"
+                />
 
             <Button
                 android:id="@+id/seeAllButton"

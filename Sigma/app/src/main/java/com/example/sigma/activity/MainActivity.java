@@ -52,8 +52,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button seeAllButton = findViewById(R.id.seeAllButton);
+        Button createNotificationButton = findViewById(R.id.createNotificationButton);
+
         seeAllButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, UserListActivity.class);
+            startActivity(intent);
+        });
+
+        createNotificationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, NotificationActivity.class);
             startActivity(intent);
         });
 
