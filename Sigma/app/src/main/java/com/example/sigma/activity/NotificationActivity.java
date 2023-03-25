@@ -12,6 +12,7 @@ import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,6 +21,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.sigma.MyService;
 import com.example.sigma.R;
 import com.example.sigma.fragment.HeaderFragment;
 
@@ -67,9 +69,14 @@ public class NotificationActivity extends AppCompatActivity {
 
         EditText notificationEditText = findViewById(R.id.notificationEditText);
         Button notificationButton = findViewById(R.id.notificationButton);
+        Button serviceButton = findViewById(R.id.serviceButton);
 
         notificationButton.setOnClickListener(v -> showNotification(notificationEditText.getText().toString()));
 
+        serviceButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MyService.class);
+            startService(intent);
+        });
     }
 
     private void showNotification(String text) {

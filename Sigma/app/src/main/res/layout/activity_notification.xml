@@ -30,6 +30,13 @@
             android:layout_height="wrap_content"
             android:text="@string/notification_button"/>
 
+        <Button
+            android:id="@+id/serviceButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/service_button"
+            />
+
     </TableLayout>
 
 
