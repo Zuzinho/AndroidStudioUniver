@@ -1,4 +1,4 @@
-package com.example.sigma.models;
+package com.example.sigma.model;
 
 public final class User {
     private final int id;
