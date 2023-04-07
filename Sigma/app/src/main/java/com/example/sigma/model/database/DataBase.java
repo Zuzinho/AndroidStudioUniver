@@ -1,4 +1,4 @@
-package com.example.sigma.view.database;
+package com.example.sigma.model.database;
 
 import com.example.sigma.R;
 import com.example.sigma.model.User;
