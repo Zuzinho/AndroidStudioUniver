@@ -1,7 +1,7 @@
 package com.example.sigma.model.database;
 
 import com.example.sigma.R;
-import com.example.sigma.model.User;
+import com.example.sigma.model.models.User;
 
 import java.util.ArrayList;
 

@@ -2,17 +2,13 @@ package com.example.sigma.viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
 
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sigma.model.User;
+import com.example.sigma.model.models.User;
 import com.example.sigma.model.database.DataBase;
-import com.example.sigma.view.activity.MainActivity;
-import com.example.sigma.view.activity.SignInActivity;
-import com.example.sigma.view.activity.UserProfile;
 import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
 
 import java.util.ArrayList;

@@ -2,14 +2,12 @@ package com.example.sigma.viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.sigma.model.User;
+import com.example.sigma.model.models.User;
 import com.example.sigma.model.database.DataBase;
-import com.example.sigma.view.activity.UserProfile;
 
 public class UserProfileViewModel extends ViewModel {
     private Context context;

@@ -10,12 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.sigma.R;
 import com.example.sigma.view.adapter.UserListViewAdapter;
 import com.example.sigma.model.database.DataBase;
-import com.example.sigma.model.User;
+import com.example.sigma.model.models.User;
 
 import java.util.ArrayList;
 

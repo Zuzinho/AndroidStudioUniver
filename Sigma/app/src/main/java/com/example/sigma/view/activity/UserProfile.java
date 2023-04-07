@@ -2,18 +2,15 @@ package com.example.sigma.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.sigma.R;
-import com.example.sigma.model.database.DataBase;
 import com.example.sigma.databinding.ActivityUserProfileBinding;
 import com.example.sigma.view.fragment.HeaderFragment;
-import com.example.sigma.model.User;
-import com.example.sigma.viewmodel.NotificationActivityViewModel;
+import com.example.sigma.model.models.User;
 import com.example.sigma.viewmodel.UserProfileViewModel;
 
 public class UserProfile extends AppCompatActivity {

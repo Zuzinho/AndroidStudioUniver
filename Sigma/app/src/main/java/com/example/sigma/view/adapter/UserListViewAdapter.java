@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sigma.R;
-import com.example.sigma.model.User;
+import com.example.sigma.model.models.User;
 
 import java.util.List;
 

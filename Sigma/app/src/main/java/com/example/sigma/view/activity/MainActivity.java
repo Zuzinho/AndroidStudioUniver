@@ -5,23 +5,15 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sigma.R;
-import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
-import com.example.sigma.model.database.DataBase;
-import com.example.sigma.model.User;
-import com.example.sigma.view.service.MyService;
 import com.example.sigma.viewmodel.MainActivityViewModel;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();

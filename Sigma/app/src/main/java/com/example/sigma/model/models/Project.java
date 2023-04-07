@@ -1,4 +1,4 @@
-package com.example.sigma.model;
+package com.example.sigma.model.models;
 
 public class Project {
     private final int id;
