@@ -33,6 +33,28 @@ public class FilesActivityViewModel extends ViewModel {
         return readFile(file);
     }
 
+    public String addSharedStorage() throws IOException {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+
+            ActivityCompat.requestPermissions((Activity) context,
+                new String[]{
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                },
+                1);
+        }
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+
+            ActivityCompat.requestPermissions((Activity) context,
+                    new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },
+                    1);
+        }
+
+        File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "file2.txt");
+        return readFile(file);
+    }
+
 
 
     private String readFile(File file){

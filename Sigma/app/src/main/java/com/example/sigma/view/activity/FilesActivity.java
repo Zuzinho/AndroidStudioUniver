@@ -48,6 +48,14 @@ public class FilesActivity extends AppCompatActivity {
             }
         });
 
+        sharedStorageButton.setOnClickListener(v -> {
+            try {
+                Log.i(TAG,  viewModel.addSharedStorage());
+            } catch (IOException e) {
+                Log.i(TAG, e.getMessage());
+            }
+        });
 
+        
     }
 }
