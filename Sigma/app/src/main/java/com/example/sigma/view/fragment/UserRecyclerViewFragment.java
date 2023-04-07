@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.sigma.R;
 import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
-import com.example.sigma.view.database.DataBase;
+import com.example.sigma.model.database.DataBase;
 import com.example.sigma.model.User;
 
 import java.util.ArrayList;
@@ -36,7 +36,6 @@ public class UserRecyclerViewFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.userRecyclerView);
 
         String path = getArguments().getString("path");
-        Toast.makeText(getContext(), path, Toast.LENGTH_SHORT).show();
 
         UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(getContext(), users);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());

@@ -48,8 +48,6 @@ public class UserRowFragment extends Fragment {
         TextView userPosition = view.findViewById(R.id.userPositionTextView);
 
         userRow.setOnClickListener(v -> {
-            Log.i(TAG, "Clicked user`s portfolio");
-
             Bundle result = new Bundle();
             result.putString("userPage", "On user page");
             getParentFragmentManager().setFragmentResult("requestKey", result);

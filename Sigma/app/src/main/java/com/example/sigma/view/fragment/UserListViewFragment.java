@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.sigma.R;
 import com.example.sigma.view.adapter.UserListViewAdapter;
-import com.example.sigma.view.database.DataBase;
+import com.example.sigma.model.database.DataBase;
 import com.example.sigma.model.User;
 
 import java.util.ArrayList;
@@ -34,7 +34,6 @@ public class UserListViewFragment extends Fragment {
         ListView listView = view.findViewById(R.id.userListView);
 
         String path = getArguments().getString("path");
-        Toast.makeText(getContext(), path, Toast.LENGTH_SHORT).show();
 
         UserListViewAdapter adapter = new UserListViewAdapter(getContext(), R.layout.fragment_user_row, users);
 
