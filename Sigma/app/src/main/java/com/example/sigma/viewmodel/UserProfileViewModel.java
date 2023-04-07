@@ -7,9 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.sigma.R;
-import com.example.sigma.model.daos.userDAO.factory.FirstUserUserDAOFactory;
 import com.example.sigma.model.models.User;
-import com.example.sigma.model.database.DataBase;
 import com.example.sigma.model.repositories.UserRepository;
 
 public class UserProfileViewModel extends ViewModel {
@@ -19,7 +17,7 @@ public class UserProfileViewModel extends ViewModel {
     public void initViewModel(Context context, Intent intent){
         this.context = context;
         int userId = intent.getExtras().getInt(context.getString(R.string.user_id));
-        this.user = new MutableLiveData<>(new UserRepository().get(new FirstUserUserDAOFactory(), userId));
+        this.user = new MutableLiveData<>(new UserRepository().get(userId));
     }
 
     public boolean existUser(){
