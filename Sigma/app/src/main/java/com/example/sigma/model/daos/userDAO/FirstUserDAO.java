@@ -5,9 +5,8 @@ import com.example.sigma.model.models.User;
 
 import java.util.List;
 
-public class FirstUserDAO implements UserDAO {
+public class FirstUserDAO implements UserDAO{
     private List<User> users = DataBase.users;
-
     @Override
     public User get(int userId) {
         for(User user: users){
@@ -24,10 +23,9 @@ public class FirstUserDAO implements UserDAO {
     @Override
     public void update(User user) {
         int userId = user.getId();
-        for(int i = 0; i < users.size(); i++){
+        for(int i = 0; i< users.size(); i++){
             if(users.get(i).getId() == userId){
-                users.remove(i);
-                users.add(user);
+                users.set(i, user);
                 return;
             }
         }
@@ -36,7 +34,7 @@ public class FirstUserDAO implements UserDAO {
     @Override
     public void delete(User user) {
         int userId = user.getId();
-        for(int i = 0; i < users.size(); i++){
+        for(int i = 0; i< users.size(); i++){
             if(users.get(i).getId() == userId){
                 users.remove(i);
                 return;
