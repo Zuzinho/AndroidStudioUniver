@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,61 +16,42 @@ import android.widget.TextView;
 
 import com.example.sigma.R;
 import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
-import com.example.sigma.view.database.DataBase;
+import com.example.sigma.model.database.DataBase;
 import com.example.sigma.model.User;
+import com.example.sigma.view.service.MyService;
+import com.example.sigma.viewmodel.MainActivityViewModel;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
-
-    private final static int maxPortfolioCount = 5;
-    private static int userId = 0;
-    private ArrayList<User> users;
-
     FragmentManager fragmentManager;
+    private MainActivityViewModel viewModel;
 
-    private ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+    private final ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                if(result.getResultCode() == RESULT_OK){
-                    Log.i(TAG, "got result");
-                    Intent intent = result.getData();
-                    userId = (int)intent.getExtras().get("userId");
-                }
-                else{
-                    Log.e(TAG, "Sign in or on error");
-                }
-                Log.i(TAG, "new userId" + userId);
+                int userId = result.getData().getExtras().getInt("userId");
+                viewModel.initViewModel(this, userId);
             });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        viewModel.initViewModel(this, 0);
 
         Button seeAllButton = findViewById(R.id.seeAllButton);
         Button createNotificationButton = findViewById(R.id.createNotificationButton);
 
-        seeAllButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, UserListActivity.class);
-            startActivity(intent);
-        });
+        seeAllButton.setOnClickListener(v -> startActivity(new Intent(this, UserListActivity.class)));
 
-        createNotificationButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, NotificationActivity.class);
-            startActivity(intent);
-        });
+        createNotificationButton.setOnClickListener(v -> startActivity(new Intent(this, NotificationActivity.class)));
 
         fragmentManager = getSupportFragmentManager();
 
-        users = DataBase.users;
-
         RecyclerView recyclerView = findViewById(R.id.userRecyclerView);
-        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(this, users);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapter);
+        viewModel.setRecyclerView(recyclerView);
     }
 
     @Override
@@ -77,27 +59,20 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         TextView textView = findViewById(R.id.myProfileButton);
-        Log.i(TAG, "userId" + userId);
-        if (userId == 0) {
-            textView.setText(R.string.sign_in);
-            textView.setOnClickListener(v -> {
-                Log.i(TAG, "Sign in clicked");
+        Intent viewModelIntent = viewModel.getIntent();
+        String signInContent = viewModelIntent.getStringExtra("signInContent");
+        textView.setText(signInContent);
+        boolean signedIn = viewModelIntent.getExtras().getBoolean("signedIn");
+        if(!signedIn){
+            textView.setOnClickListener(v -> mStartForResult.launch(new Intent(this, SignInActivity.class)));
 
-                Intent intent = new Intent(this, SignInActivity.class);
-                mStartForResult.launch(intent);
-            });
             return;
         }
-        textView.setText(R.string.my_profile_button_text);
-        textView.setOnClickListener(v -> {
-            Log.i(TAG, "My Profile clicked");
-            Intent intent = new Intent(this, UserProfile.class);
+
+        int userId = viewModelIntent.getExtras().getInt("userId");
+        textView.setOnClickListener(v -> {Intent intent = new Intent(this, UserProfile.class);
             intent.putExtra("userId", userId);
             startActivity(intent);
         });
-    }
-
-    public static int getUserId(){
-        return userId;
     }
 }

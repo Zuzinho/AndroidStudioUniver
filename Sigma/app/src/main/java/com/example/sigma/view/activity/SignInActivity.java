@@ -2,6 +2,7 @@ package com.example.sigma.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +11,19 @@ import android.widget.Button;
 
 import com.example.sigma.R;
 import com.example.sigma.view.fragment.HeaderFragment;
+import com.example.sigma.viewmodel.NotificationActivityViewModel;
+import com.example.sigma.viewmodel.SignInActivityViewModel;
 
 public class SignInActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
     FragmentManager fragmentManager;
+    private SignInActivityViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        viewModel = new ViewModelProvider(this).get(SignInActivityViewModel.class);
+        viewModel.initViewModel(this);
 
         if(savedInstanceState == null){
             fragmentManager = getSupportFragmentManager();
@@ -26,17 +32,10 @@ public class SignInActivity extends AppCompatActivity {
         }
 
         Button signUpButton = findViewById(R.id.signUpButton);
-        signUpButton.setOnClickListener(v -> {
-            Log.i(TAG, "Clicked sign up button");
-
-            Intent intent = new Intent(this, SignUpActivity.class);
-            startActivity(intent);
-        });
+        signUpButton.setOnClickListener(v -> startActivity(new Intent(this, SignUpActivity.class)));
 
         Button signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(v -> {
-            Log.i(TAG, "Clicked on signIn button");
-
             Intent intent = new Intent();
             intent.putExtra("userId", 1);
             setResult(RESULT_OK, intent);

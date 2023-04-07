@@ -2,25 +2,33 @@ package com.example.sigma.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.sigma.R;
-import com.example.sigma.view.database.DataBase;
+import com.example.sigma.model.database.DataBase;
 import com.example.sigma.databinding.ActivityUserProfileBinding;
 import com.example.sigma.view.fragment.HeaderFragment;
 import com.example.sigma.model.User;
+import com.example.sigma.viewmodel.NotificationActivityViewModel;
+import com.example.sigma.viewmodel.UserProfileViewModel;
 
 public class UserProfile extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
-    private User user;
     FragmentManager fragmentManager;
+    private UserProfileViewModel viewModel;
+    ActivityUserProfileBinding view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityUserProfileBinding view = ActivityUserProfileBinding.inflate(getLayoutInflater());
+        view = ActivityUserProfileBinding.inflate(getLayoutInflater());
         setContentView(view.getRoot());
+        viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
+        viewModel.initViewModel(this, getIntent());
 
         if(savedInstanceState == null){
             fragmentManager = getSupportFragmentManager();
@@ -28,14 +36,17 @@ public class UserProfile extends AppCompatActivity {
                     HeaderFragment.class, null).commit();
         }
 
-        int userId = (int)getIntent().getExtras().get("userId");
-        user = DataBase.getUserById(userId);
 
-        if(user == null) {
+        if(!viewModel.existUser()) {
             Toast.makeText(getApplicationContext(), "No such user", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
+
+        viewModel.getUser().observe(this, user -> setView(user));
+    }
+
+    private void setView(User user){
         view.userAvatar.setImageResource(user.getAvatarPath());
         view.userName.setText(user.getName());
         view.userPosition.setText(user.getPosition());
