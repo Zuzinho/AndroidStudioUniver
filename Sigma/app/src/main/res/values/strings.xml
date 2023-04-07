@@ -27,4 +27,12 @@
     <string name="user_avatar">userAvatar</string>
     <string name="text_view_content">textViewContent</string>
     <string name="signed_in">signedIn</string>
+    <string name="files_button">Files</string>
+    <string name="title_activity_files">FilesActivity</string>
+    <string name="app_specific_storage">app-specific storage</string>
+    <string name="shared_storage">Shared storage</string>
+    <string name="shared_preferences">Shared preferences</string>
+    <string name="insert_user">Insert user</string>
+    <string name="get_user">Get user</string>
+    <string name="preference_file_key">"com.example.Sigma.PREFERENCE_FILE_KEY</string>
 </resources>
