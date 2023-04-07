@@ -35,10 +35,13 @@ public class MainActivity extends AppCompatActivity {
 
         Button seeAllButton = findViewById(R.id.seeAllButton);
         Button createNotificationButton = findViewById(R.id.createNotificationButton);
+        Button filesButton = findViewById(R.id.filesButton);
 
         seeAllButton.setOnClickListener(v -> startActivity(new Intent(this, UserListActivity.class)));
 
         createNotificationButton.setOnClickListener(v -> startActivity(new Intent(this, NotificationActivity.class)));
+
+        filesButton.setOnClickListener(v -> startActivity(new Intent(this, FilesActivity.class)));
 
         fragmentManager = getSupportFragmentManager();
 
@@ -57,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         boolean signedIn = viewModelIntent.getExtras().getBoolean(getString(R.string.signed_in));
         if(!signedIn){
             textView.setOnClickListener(v -> mStartForResult.launch(new Intent(this, SignInActivity.class)));
-
             return;
         }
 

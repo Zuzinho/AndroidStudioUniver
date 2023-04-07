@@ -141,14 +141,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/notification_button"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginStart="10dp"
                 />
 
             <Button
                 android:id="@+id/seeAllButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/see_all_button" />
+                android:text="@string/see_all_button"
+                android:layout_marginHorizontal="10dp"/>
+
+            <Button
+                android:id="@+id/filesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/files_button"
+                />
 
         </LinearLayout>
 
