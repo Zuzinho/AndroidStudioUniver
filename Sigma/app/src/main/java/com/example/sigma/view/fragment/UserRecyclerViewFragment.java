@@ -34,8 +34,6 @@ public class UserRecyclerViewFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.userRecyclerView);
 
-        String path = getArguments().getString("path");
-
         UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(getContext(), users);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
 

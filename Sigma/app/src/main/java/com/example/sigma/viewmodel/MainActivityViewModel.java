@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sigma.R;
 import com.example.sigma.model.models.User;
 import com.example.sigma.model.database.DataBase;
 import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
@@ -35,13 +36,13 @@ public class MainActivityViewModel extends ViewModel {
     public Intent getIntent(){
         Intent intent = new Intent();
         if(userId == 0){
-            intent.putExtra("textViewContent", "Sign in");
-            intent.putExtra("signedIn", false);
+            intent.putExtra(context.getString(R.string.text_view_content), context.getString(R.string.sign_in));
+            intent.putExtra(context.getString(R.string.signed_in), false);
             return intent;
         }
-        intent.putExtra("textViewContent", "My profile");
-        intent.putExtra("userId", userId);
-        intent.putExtra("signedIn", true);
+        intent.putExtra(context.getString(R.string.text_view_content), context.getString(R.string.my_profile_button_text));
+        intent.putExtra(context.getString(R.string.user_id), userId);
+        intent.putExtra(context.getString(R.string.signed_in), true);
         return intent;
     }
 }

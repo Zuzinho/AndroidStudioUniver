@@ -21,4 +21,10 @@
     <string name="notification_hint">Enter notification text</string>
     <string name="notification_button">Show notification</string>
     <string name="service_button">Run service</string>
+    <string name="user_id">userId</string>
+    <string name="user_name">userName</string>
+    <string name="user_position">userPosition</string>
+    <string name="user_avatar">userAvatar</string>
+    <string name="text_view_content">textViewContent</string>
+    <string name="signed_in">signedIn</string>
 </resources>

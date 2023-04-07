@@ -37,7 +37,7 @@ public class SignInActivity extends AppCompatActivity {
         Button signInButton = findViewById(R.id.signInButton);
         signInButton.setOnClickListener(v -> {
             Intent intent = new Intent();
-            intent.putExtra("userId", 1);
+            intent.putExtra(getString(R.string.user_id), 1);
             setResult(RESULT_OK, intent);
             finish();
         });

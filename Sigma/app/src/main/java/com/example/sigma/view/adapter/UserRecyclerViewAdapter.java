@@ -47,7 +47,7 @@ public class UserRecyclerViewAdapter extends
             Context context = view.getContext();
             Intent intent = new Intent(context, UserProfile.class);
             int userId = user.getId();
-            intent.putExtra("userId", userId);
+            intent.putExtra(context.getString(R.string.user_id), userId);
             context.startActivity(intent);
         });
     }

@@ -23,18 +23,6 @@ public class UserRowFragment extends Fragment {
         super(R.layout.fragment_user_row);
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-
-        getParentFragmentManager().setFragmentResultListener("requestKey", this,
-                (requestKey, bundle) -> {
-                    String result = bundle.getString("userPage");
-                    Log.i(TAG, "User page - " + result);
-                }
-        );
-    }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
@@ -48,18 +36,15 @@ public class UserRowFragment extends Fragment {
         TextView userPosition = view.findViewById(R.id.userPositionTextView);
 
         userRow.setOnClickListener(v -> {
-            Bundle result = new Bundle();
-            result.putString("userPage", "On user page");
-            getParentFragmentManager().setFragmentResult("requestKey", result);
             Intent intent = new Intent(getContext(), UserProfile.class);
-            int id = data.getInt("userId");
-            intent.putExtra("userId", id);
+            int id = data.getInt(getString(R.string.user_id));
+            intent.putExtra(getString(R.string.user_id), id);
             startActivity(intent);
         });
 
-        userName.setText(data.getString("userName"));
-        userAvatar.setImageResource(data.getInt("userAvatar"));
-        userPosition.setText(data.getString("userPosition"));
+        userName.setText(data.getString(getString(R.string.user_name)));
+        userAvatar.setImageResource(data.getInt(getString(R.string.user_avatar)));
+        userPosition.setText(data.getString(getString(R.string.user_position)));
 
         return view;
     }

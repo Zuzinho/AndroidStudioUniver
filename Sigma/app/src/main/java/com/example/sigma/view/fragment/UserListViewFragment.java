@@ -32,8 +32,6 @@ public class UserListViewFragment extends Fragment {
 
         ListView listView = view.findViewById(R.id.userListView);
 
-        String path = getArguments().getString("path");
-
         UserListViewAdapter adapter = new UserListViewAdapter(getContext(), R.layout.fragment_user_row, users);
 
         listView.setAdapter(adapter);

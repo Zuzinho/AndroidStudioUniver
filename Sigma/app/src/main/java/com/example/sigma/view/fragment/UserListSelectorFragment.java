@@ -27,19 +27,15 @@ public class UserListSelectorFragment extends Fragment {
         Button listViewSelectButton = view.findViewById(R.id.listViewSelectButton);
         Button recyclerViewSelectButton = view.findViewById(R.id.recyclerViewSelectButton);
 
-        Bundle bundle = new Bundle();
-
         listViewSelectButton.setOnClickListener(v -> {
-            bundle.putString("path", "From userListSelectorFragment to userListViewFragment");
             Navigation.findNavController(v).navigate(R.id.action_userListSelectorFragment_to_userListViewFragment,
-                    bundle);
+                    null);
         }
         );
 
         recyclerViewSelectButton.setOnClickListener(v -> {
-            bundle.putString("path", "From userListSelectorFragment to userRecyclerViewFragment");
             Navigation.findNavController(v).navigate(R.id.action_userListSelectorFragment_to_userRecyclerViewFragment,
-                    bundle);
+                    null);
         });
 
         return view;

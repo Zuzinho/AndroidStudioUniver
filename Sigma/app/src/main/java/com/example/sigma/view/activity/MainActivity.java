@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                int userId = result.getData().getExtras().getInt("userId");
+                int userId = result.getData().getExtras().getInt(getString(R.string.user_id));
                 viewModel.initViewModel(this, userId);
             });
 
@@ -52,18 +52,18 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.myProfileButton);
         Intent viewModelIntent = viewModel.getIntent();
-        String signInContent = viewModelIntent.getStringExtra("signInContent");
-        textView.setText(signInContent);
-        boolean signedIn = viewModelIntent.getExtras().getBoolean("signedIn");
+        String textViewContent = viewModelIntent.getStringExtra(getString(R.string.text_view_content));
+        textView.setText(textViewContent);
+        boolean signedIn = viewModelIntent.getExtras().getBoolean(getString(R.string.signed_in));
         if(!signedIn){
             textView.setOnClickListener(v -> mStartForResult.launch(new Intent(this, SignInActivity.class)));
 
             return;
         }
 
-        int userId = viewModelIntent.getExtras().getInt("userId");
+        int userId = viewModelIntent.getExtras().getInt(getString(R.string.user_id));
         textView.setOnClickListener(v -> {Intent intent = new Intent(this, UserProfile.class);
-            intent.putExtra("userId", userId);
+            intent.putExtra(getString(R.string.user_id), userId);
             startActivity(intent);
         });
     }
