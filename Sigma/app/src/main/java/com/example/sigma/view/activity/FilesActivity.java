@@ -56,6 +56,8 @@ public class FilesActivity extends AppCompatActivity {
             }
         });
 
-        
+        sharedPreferencesButton.setOnClickListener(v -> {
+            Log.i(TAG, viewModel.addSharedPreferences());
+        });
     }
 }

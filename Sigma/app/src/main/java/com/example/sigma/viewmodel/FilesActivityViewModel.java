@@ -55,7 +55,10 @@ public class FilesActivityViewModel extends ViewModel {
         return readFile(file);
     }
 
-
+    public String addSharedPreferences(){
+        SharedPreferences sharedPreferences = ((Activity)context).getPreferences(Context.MODE_PRIVATE);
+        return sharedPreferences.getString("content", "Error");
+    }
 
     private String readFile(File file){
         try(FileReader fileReader = new FileReader(file)){
