@@ -19,7 +19,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.sigma.MyService;
+import com.example.sigma.view.service.MyService;
 import com.example.sigma.R;
 import com.example.sigma.view.fragment.HeaderFragment;
 

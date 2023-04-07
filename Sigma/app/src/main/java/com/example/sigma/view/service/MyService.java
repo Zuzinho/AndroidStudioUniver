@@ -1,4 +1,4 @@
-package com.example.sigma;
+package com.example.sigma.view.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.sigma.R;
 import com.example.sigma.view.activity.MainActivity;
 
 public class MyService extends Service {
