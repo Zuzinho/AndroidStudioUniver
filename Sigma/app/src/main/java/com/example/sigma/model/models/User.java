@@ -1,18 +1,20 @@
 package com.example.sigma.model.models;
 
+import androidx.annotation.NonNull;
+
 public final class User {
     private final int id;
     private String name;
     private String position;
     private String info;
-    private int AvatarPath;
+    private int avatarPath;
 
     public User(int id, String name, String position, String info, int avatarPath) {
         this.id = id;
         this.name = name;
         this.position = position;
         this.info = info;
-        AvatarPath = avatarPath;
+        this.avatarPath = avatarPath;
     }
 
     public int getId() {
@@ -32,6 +34,12 @@ public final class User {
     }
 
     public int getAvatarPath() {
-        return AvatarPath;
+        return avatarPath;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Id: " + id + "; name: " + name + "; position: " + position + "; info: " + info + "; path: " + avatarPath;
     }
 }
