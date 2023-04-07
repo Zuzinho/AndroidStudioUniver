@@ -15,28 +15,28 @@
         android:theme="@style/Theme.Sigma"
         tools:targetApi="31">
         <service
-            android:name=".MyService"
+            android:name=".view.service.MyService"
             android:enabled="true"
             android:exported="true"
             />
 
         <activity
-            android:name=".activity.NotificationActivity"
+            android:name=".view.activity.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.UserListActivity"
+            android:name=".view.activity.UserListActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.UserProfile"
+            android:name=".view.activity.UserProfile"
             android:exported="false" />
         <activity
-            android:name=".activity.SignInActivity"
+            android:name=".view.activity.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SignUpActivity"
+            android:name=".view.activity.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
