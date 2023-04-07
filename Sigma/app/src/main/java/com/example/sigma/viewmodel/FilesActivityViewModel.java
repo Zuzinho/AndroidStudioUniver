@@ -5,27 +5,35 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Path;
 import android.os.Environment;
-import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModel;
+import androidx.room.Room;
 
 import com.example.sigma.R;
+import com.example.sigma.model.database.AppData;
+import com.example.sigma.model.database.DBUserDAO;
+import com.example.sigma.model.database.DataBase;
+import com.example.sigma.model.models.User;
+import com.example.sigma.model.models.UserEntity;
 
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.util.List;
 
 public class FilesActivityViewModel extends ViewModel {
     private final String TAG = this.getClass().getSimpleName();
+    private List<User> users = DataBase.users;
     private Context context;
+    AppData db;
 
     public void initViewModel(Context context){
         this.context = context;
+        db = Room.databaseBuilder(context.getApplicationContext(),
+                AppData.class, "DataBase1").build();
+
     }
 
     public String addFileAppSpecificStorage() throws IOException {
@@ -58,6 +66,20 @@ public class FilesActivityViewModel extends ViewModel {
     public String addSharedPreferences(){
         SharedPreferences sharedPreferences = ((Activity)context).getPreferences(Context.MODE_PRIVATE);
         return sharedPreferences.getString("content", "Error");
+    }
+
+    public String addDataBase(){
+        DBUserDAO userDAO = db.userDAO();
+        UserEntity user = new UserEntity("Nick", "Nicks pos", "Nicks info", R.mipmap.user_avatar0_round);
+        userDAO.insert(user);
+
+        return "Inserted";
+    }
+
+    public String getDataBase(){
+        DBUserDAO userDAO = db.userDAO();
+        UserEntity user = userDAO.getAll().get(0);
+        return user.toString();
     }
 
     private String readFile(File file){

@@ -14,6 +14,8 @@ import com.example.sigma.view.fragment.HeaderFragment;
 import com.example.sigma.viewmodel.FilesActivityViewModel;
 
 import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class FilesActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
@@ -56,8 +58,17 @@ public class FilesActivity extends AppCompatActivity {
             }
         });
 
-        sharedPreferencesButton.setOnClickListener(v -> {
-            Log.i(TAG, viewModel.addSharedPreferences());
+        sharedPreferencesButton.setOnClickListener(v -> Log.i(TAG, viewModel.addSharedPreferences()));
+
+
+        insertUserButton.setOnClickListener(v -> {
+            Executor executor = Executors.newSingleThreadExecutor();
+            executor.execute(()->Log.i(TAG, viewModel.addDataBase()));
+        });
+
+        getUserButton.setOnClickListener(v -> {
+            Executor executor = Executors.newSingleThreadExecutor();
+            executor.execute(()->Log.i(TAG, viewModel.getDataBase()));
         });
     }
 }
