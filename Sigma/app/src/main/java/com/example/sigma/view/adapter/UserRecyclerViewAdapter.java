@@ -1,6 +1,7 @@
 package com.example.sigma.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sigma.R;
 import com.example.sigma.model.User;
+import com.example.sigma.view.activity.UserProfile;
 
 import java.util.ArrayList;
 
@@ -23,6 +26,7 @@ public class UserRecyclerViewAdapter extends
     private final String TAG = this.getClass().getSimpleName();
     private LayoutInflater inflater;
     private ArrayList<User> users;
+    private View view;
 
     public UserRecyclerViewAdapter(Context context, ArrayList<User> users){
         this.inflater = LayoutInflater.from(context);
@@ -32,7 +36,7 @@ public class UserRecyclerViewAdapter extends
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.fragment_user_row, parent, false);
+        view = inflater.inflate(R.layout.fragment_user_row, parent, false);
         return new UserViewHolder(view);
     }
 
@@ -43,8 +47,11 @@ public class UserRecyclerViewAdapter extends
         holder.userNameTextView.setText(user.getName());
         holder.userPositionTextView.setText(user.getPosition());
         holder.userRow.setOnClickListener(v -> {
-            Log.i(TAG, "Clicked user`s portfolio");
-            Toast.makeText(inflater.getContext(), "RecyclerView item clicked", Toast.LENGTH_SHORT).show();
+            Context context = view.getContext();
+            Intent intent = new Intent(context, UserProfile.class);
+            int userId = user.getId();
+            intent.putExtra("userId", userId);
+            context.startActivity(intent);
         });
     }
 
