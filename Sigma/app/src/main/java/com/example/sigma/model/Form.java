@@ -1,7 +1,7 @@
 package com.example.sigma.model;
 
 public class Form {
-    private int id;
+    private final int id;
     private String email;
     private String password;
     private int recoverCode;

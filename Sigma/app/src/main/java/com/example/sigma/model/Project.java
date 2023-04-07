@@ -1,7 +1,7 @@
 package com.example.sigma.model;
 
 public class Project {
-    private int id;
+    private final int id;
     private String title;
     private String photoUrl;
     private String about;
