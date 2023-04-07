@@ -1,26 +1,20 @@
 package com.example.sigma;
 
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
-import android.location.SettingInjectorService;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.PixelCopy;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
-import androidx.core.app.NotificationCompat;
 
-import com.example.sigma.activity.MainActivity;
-import com.example.sigma.activity.NotificationActivity;
+import com.example.sigma.view.activity.MainActivity;
 
 public class MyService extends Service {
 

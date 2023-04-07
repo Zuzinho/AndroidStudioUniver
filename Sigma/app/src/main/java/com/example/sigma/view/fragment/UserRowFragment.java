@@ -1,4 +1,4 @@
-package com.example.sigma.fragment;
+package com.example.sigma.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sigma.R;
-import com.example.sigma.activity.UserProfile;
+import com.example.sigma.view.activity.UserProfile;
 
 public class UserRowFragment extends Fragment {
     private final String TAG = this.getClass().getSimpleName();

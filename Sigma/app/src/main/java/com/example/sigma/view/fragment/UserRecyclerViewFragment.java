@@ -1,4 +1,4 @@
-package com.example.sigma.fragment;
+package com.example.sigma.view.fragment;
 
 import android.os.Bundle;
 
@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.sigma.R;
-import com.example.sigma.adapter.UserRecyclerViewAdapter;
-import com.example.sigma.database.DataBase;
-import com.example.sigma.models.User;
+import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
+import com.example.sigma.view.database.DataBase;
+import com.example.sigma.model.User;
 
 import java.util.ArrayList;
 

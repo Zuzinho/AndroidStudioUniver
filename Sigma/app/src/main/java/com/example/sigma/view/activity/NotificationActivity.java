@@ -1,6 +1,5 @@
-package com.example.sigma.activity;
+package com.example.sigma.view.activity;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -9,7 +8,6 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -23,9 +21,7 @@ import android.widget.EditText;
 
 import com.example.sigma.MyService;
 import com.example.sigma.R;
-import com.example.sigma.fragment.HeaderFragment;
-
-import java.security.Permission;
+import com.example.sigma.view.fragment.HeaderFragment;
 
 public class NotificationActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();

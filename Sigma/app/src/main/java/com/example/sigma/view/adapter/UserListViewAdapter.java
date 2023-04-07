@@ -1,8 +1,6 @@
-package com.example.sigma.adapter;
+package com.example.sigma.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sigma.R;
-import com.example.sigma.activity.UserProfile;
-import com.example.sigma.models.User;
+import com.example.sigma.model.User;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class UserListViewAdapter extends ArrayAdapter<User> {
     private final String TAG = this.getClass().getSimpleName();

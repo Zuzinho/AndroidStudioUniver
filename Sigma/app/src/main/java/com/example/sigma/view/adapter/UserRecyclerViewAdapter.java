@@ -1,4 +1,4 @@
-package com.example.sigma.adapter;
+package com.example.sigma.view.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sigma.R;
-import com.example.sigma.models.User;
+import com.example.sigma.model.User;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.sigma.activity;
+package com.example.sigma.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -9,7 +9,7 @@ import android.util.Log;
 import android.widget.Button;
 
 import com.example.sigma.R;
-import com.example.sigma.fragment.HeaderFragment;
+import com.example.sigma.view.fragment.HeaderFragment;
 
 public class SignInActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();

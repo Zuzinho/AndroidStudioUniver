@@ -1,4 +1,4 @@
-package com.example.sigma.fragment;
+package com.example.sigma.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.sigma.activity.MainActivity;
+import com.example.sigma.view.activity.MainActivity;
 import com.example.sigma.R;
 
 public class HeaderFragment extends Fragment {

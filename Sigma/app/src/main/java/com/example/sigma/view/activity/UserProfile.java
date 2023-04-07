@@ -1,4 +1,4 @@
-package com.example.sigma.activity;
+package com.example.sigma.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.sigma.R;
-import com.example.sigma.database.DataBase;
+import com.example.sigma.view.database.DataBase;
 import com.example.sigma.databinding.ActivityUserProfileBinding;
-import com.example.sigma.fragment.HeaderFragment;
-import com.example.sigma.models.User;
+import com.example.sigma.view.fragment.HeaderFragment;
+import com.example.sigma.model.User;
 
 public class UserProfile extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();

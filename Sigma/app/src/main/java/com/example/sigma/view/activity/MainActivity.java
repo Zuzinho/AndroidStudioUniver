@@ -1,9 +1,8 @@
-package com.example.sigma.activity;
+package com.example.sigma.view.activity;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,15 +11,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.sigma.R;
-import com.example.sigma.adapter.UserRecyclerViewAdapter;
-import com.example.sigma.database.DataBase;
-import com.example.sigma.fragment.UserRowFragment;
-import com.example.sigma.models.User;
+import com.example.sigma.view.adapter.UserRecyclerViewAdapter;
+import com.example.sigma.view.database.DataBase;
+import com.example.sigma.model.User;
 
 import java.util.ArrayList;
 

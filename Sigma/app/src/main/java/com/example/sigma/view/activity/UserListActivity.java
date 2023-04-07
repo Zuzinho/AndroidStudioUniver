@@ -1,4 +1,4 @@
-package com.example.sigma.activity;
+package com.example.sigma.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -6,8 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
 import com.example.sigma.R;
-import com.example.sigma.fragment.HeaderFragment;
-import com.example.sigma.fragment.UserListSelectorFragment;
+import com.example.sigma.view.fragment.HeaderFragment;
 
 public class UserListActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
