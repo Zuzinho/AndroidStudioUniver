@@ -1,19 +1,19 @@
 package com.example.sigma.model.repositories;
 
-import com.example.sigma.model.daos.userDAO.FirstUserDAO;
-import com.example.sigma.model.daos.userDAO.SecondUserDAO;
+import com.example.sigma.model.daos.userDAO.FirstDataSource;
+import com.example.sigma.model.daos.userDAO.SecondDataSource;
 import com.example.sigma.model.models.User;
 
 public class UserRepository {
-    FirstUserDAO firstUserDAO = new FirstUserDAO();
-    SecondUserDAO secondUserDAO = new SecondUserDAO();
+    FirstDataSource firstUserDAO = new FirstDataSource();
+    SecondDataSource secondDataSource = new SecondDataSource();
 
     public User get(int userId){
         return firstUserDAO.get(userId);
     }
 
     public void create(User user){
-        secondUserDAO.create(user);
+        secondDataSource.create(user);
     }
 
     public void update(User user){
@@ -21,6 +21,6 @@ public class UserRepository {
     }
 
     public void delete(User user){
-        secondUserDAO.delete(user);
+        secondDataSource.delete(user);
     }
 }

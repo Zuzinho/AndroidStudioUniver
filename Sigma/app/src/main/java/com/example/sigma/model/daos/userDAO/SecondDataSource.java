@@ -5,9 +5,8 @@ import com.example.sigma.model.models.User;
 
 import java.util.List;
 
-public class SecondUserDAO implements UserDAO{
+public class SecondDataSource {
     private List<User> users = DataBase.users;
-    @Override
     public User get(int userId) {
         for(User user: users){
             if(user.getId() == userId) return user;
@@ -15,12 +14,10 @@ public class SecondUserDAO implements UserDAO{
         return null;
     }
 
-    @Override
     public void create(User user) {
         users.add(user);
     }
 
-    @Override
     public void update(User user) {
         int userId = user.getId();
         for(int i = 0; i< users.size(); i++){
@@ -30,8 +27,6 @@ public class SecondUserDAO implements UserDAO{
             }
         }
     }
-
-    @Override
     public void delete(User user) {
         int userId = user.getId();
         for(int i = 0; i< users.size(); i++){
