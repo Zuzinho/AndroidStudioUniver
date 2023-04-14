@@ -27,7 +27,18 @@ import java.io.IOException;
 
 public class AnotherAppsActivity extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
+    ActivityResultLauncher<String> startActivityForResult = registerForActivityResult(
+            new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
 
+                    TextView resultAnotherAppTextView = findViewById(R.id.resultAnotherAppTextView);
+                    resultAnotherAppTextView.setText(result.toString());
+                    Log.i(TAG,result.toString());
+                }
+            }
+    );
     FragmentManager fragmentManager;
 
     @Override
@@ -51,9 +62,10 @@ public class AnotherAppsActivity extends AppCompatActivity {
             Uri number = Uri.parse("tel:" + telNumber);
             Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
             startActivity(callIntent);
-            
         });
 
-
+        getAnotherAppButton.setOnClickListener(v -> {
+            startActivityForResult.launch("text/plain");
+        });
     }
 }
