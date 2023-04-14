@@ -35,4 +35,8 @@
     <string name="insert_user">Insert user</string>
     <string name="get_user">Get user</string>
     <string name="preference_file_key">"com.example.Sigma.PREFERENCE_FILE_KEY</string>
+    <string name="another_apps_button">Another apps</string>
+    <string name="tel_hint">Enter telephone number</string>
+    <string name="start_another_app_button">Call</string>
+    <string name="get_another_app_button">Get info from another app</string>
 </resources>
