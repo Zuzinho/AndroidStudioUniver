@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/notification_button"
-                android:layout_marginStart="10dp"
+                android:layout_marginHorizontal="10dp"
                 />
 
             <Button
@@ -149,13 +149,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/see_all_button"
-                android:layout_marginHorizontal="10dp"/>
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <Button
                 android:id="@+id/filesButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/files_button"
+                android:layout_marginHorizontal="10dp"
+                />
+
+            <Button
+                android:id="@+id/anotherApps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/another_apps_button"
                 />
 
         </LinearLayout>

@@ -36,12 +36,15 @@ public class MainActivity extends AppCompatActivity {
         Button seeAllButton = findViewById(R.id.seeAllButton);
         Button createNotificationButton = findViewById(R.id.createNotificationButton);
         Button filesButton = findViewById(R.id.filesButton);
+        Button anotherApps = findViewById(R.id.anotherApps);
 
         seeAllButton.setOnClickListener(v -> startActivity(new Intent(this, UserListActivity.class)));
 
         createNotificationButton.setOnClickListener(v -> startActivity(new Intent(this, NotificationActivity.class)));
 
         filesButton.setOnClickListener(v -> startActivity(new Intent(this, FilesActivity.class)));
+
+        anotherApps.setOnClickListener(v -> startActivity(new Intent(this, AnotherAppsActivity.class)));
 
         fragmentManager = getSupportFragmentManager();
 
