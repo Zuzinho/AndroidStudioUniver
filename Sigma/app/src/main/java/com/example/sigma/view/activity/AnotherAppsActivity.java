@@ -51,6 +51,7 @@ public class AnotherAppsActivity extends AppCompatActivity {
             Uri number = Uri.parse("tel:" + telNumber);
             Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
             startActivity(callIntent);
+            
         });
 
 
