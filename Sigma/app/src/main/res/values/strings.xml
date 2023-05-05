@@ -25,6 +25,7 @@
     <string name="user_name">userName</string>
     <string name="user_position">userPosition</string>
     <string name="user_avatar">userAvatar</string>
+    <string name="user_info">userInfo</string>
     <string name="text_view_content">textViewContent</string>
     <string name="signed_in">signedIn</string>
     <string name="files_button">Files</string>
