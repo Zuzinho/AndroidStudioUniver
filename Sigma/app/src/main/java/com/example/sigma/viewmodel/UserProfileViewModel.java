@@ -2,14 +2,19 @@ package com.example.sigma.viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.sigma.R;
+import com.example.sigma.UserRowWorker;
 import com.example.sigma.databinding.ActivityUserProfileBinding;
 import com.example.sigma.model.models.User;
 import com.example.sigma.model.repositories.UserRepository;
@@ -28,6 +33,7 @@ public class UserProfileViewModel extends ViewModel {
     private ActivityUserProfileBinding view;
 
     private ExecutorService executorService;
+    private WorkManager workManager;
 
     private Runnable setUserAvatar = () -> {
         Log.i(TAG, "setUserAvatar");
@@ -55,7 +61,8 @@ public class UserProfileViewModel extends ViewModel {
         this.executorService = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingDeque<Runnable>());
 
-
+        workManager = WorkManager.getInstance(context);
+        UserRowWorker.setContext(context);
     }
 
     public boolean existUser(){
@@ -72,6 +79,22 @@ public class UserProfileViewModel extends ViewModel {
         executorService.execute(setUserPosition);
         executorService.execute(setUserInfo);
         executorService.shutdown();
+
+        OneTimeWorkRequest userProfileRequest =
+                new OneTimeWorkRequest.Builder(UserRowWorker.class).
+                        setInputData(createUserRowData(userValue)).build();
+
+        workManager.enqueue(userProfileRequest);
+    }
+
+    private Data createUserRowData(User userValue){
+        Data.Builder builder = new Data.Builder();
+        builder.putInt(context.getString(R.string.user_avatar), userValue.getAvatarPath());
+        builder.putString(context.getString(R.string.user_name), userValue.getName());
+        builder.putString(context.getString(R.string.user_position), userValue.getPosition());
+        builder.putString(context.getString(R.string.user_info), userValue.getInfo());
+
+        return builder.build();
     }
 
 }
