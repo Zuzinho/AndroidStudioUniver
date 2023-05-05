@@ -17,7 +17,7 @@ public class UserProfile extends AppCompatActivity {
     private final String TAG = this.getClass().getSimpleName();
     FragmentManager fragmentManager;
     private UserProfileViewModel viewModel;
-    ActivityUserProfileBinding view;
+    private ActivityUserProfileBinding view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class UserProfile extends AppCompatActivity {
         view = ActivityUserProfileBinding.inflate(getLayoutInflater());
         setContentView(view.getRoot());
         viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
-        viewModel.initViewModel(this, getIntent());
+        viewModel.initViewModel(this, getIntent(), view);
 
         if(savedInstanceState == null){
             fragmentManager = getSupportFragmentManager();
@@ -40,13 +40,10 @@ public class UserProfile extends AppCompatActivity {
             return;
         }
 
-        viewModel.getUser().observe(this, this::setView);
+        viewModel.getUser().observe(this, user -> viewModel.setView(user));
     }
 
-    private void setView(User user){
-        view.userAvatar.setImageResource(user.getAvatarPath());
-        view.userName.setText(user.getName());
-        view.userPosition.setText(user.getPosition());
-        view.userInfo.setText(user.getInfo());
+    public ActivityUserProfileBinding getView(){
+        return this.view;
     }
 }
