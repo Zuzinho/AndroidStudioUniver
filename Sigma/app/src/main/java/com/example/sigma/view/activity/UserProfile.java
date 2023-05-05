@@ -40,7 +40,7 @@ public class UserProfile extends AppCompatActivity {
             return;
         }
 
-        viewModel.getUser().observe(this, user -> setView(user));
+        viewModel.getUser().observe(this, this::setView);
     }
 
     private void setView(User user){
