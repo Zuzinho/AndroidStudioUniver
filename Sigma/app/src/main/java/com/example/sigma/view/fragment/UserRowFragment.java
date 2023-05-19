@@ -1,6 +1,8 @@
 package com.example.sigma.view.fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -32,7 +34,13 @@ public class UserRowFragment extends Fragment {
 
         LinearLayout userRow = view.findViewById(R.id.userRow);
         TextView userName = view.findViewById(R.id.userNameTextView);
+
         ImageView userAvatar = view.findViewById(R.id.userAvatarImageView);
+        Drawable drawable = userAvatar.getDrawable();
+        if (drawable instanceof Animatable){
+            ((Animatable)userAvatar).start();
+        }
+
         TextView userPosition = view.findViewById(R.id.userPositionTextView);
 
         userRow.setOnClickListener(v -> {
@@ -43,7 +51,6 @@ public class UserRowFragment extends Fragment {
         });
 
         userName.setText(data.getString(getString(R.string.user_name)));
-        userAvatar.setImageResource(data.getInt(getString(R.string.user_avatar)));
         userPosition.setText(data.getString(getString(R.string.user_position)));
 
         return view;
